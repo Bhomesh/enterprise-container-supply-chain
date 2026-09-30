@@ -1,0 +1,13 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "intake.registry.corp/payments/core-api:1.0.0-rc1",
+  "ArtifactType": "container_image",
+  "Results": [
+    {
+      "Target": "payment-service (gobinary)",
+      "Class": "lang-pkgs",
+      "Type": "gobinary",
+      "Vulnerabilities": []
+    }
+  ]
+}

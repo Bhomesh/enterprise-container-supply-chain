@@ -1,0 +1,18 @@
+# Approved CVE Exceptions & Temporary Waivers
+# Any waiver must have an authorized approver and valid expiration date
+waivers:
+  - cve_id: "CVE-2023-44487"
+    package: "golang.org/x/net"
+    severity: "HIGH"
+    reason: "HTTP/2 Rapid Reset mitigation deployed at cloud WAF / ALB layer. Fix in next sprint."
+    approver: "security-lead@corp.bank"
+    created_at: "2026-09-01"
+    expires_at: "2026-11-30"
+
+  - cve_id: "CVE-2024-24790"
+    package: "net/mail"
+    severity: "HIGH"
+    reason: "Application does not parse untrusted email headers; attack vector unreachable."
+    approver: "ciso-office@corp.bank"
+    created_at: "2026-08-15"
+    expires_at: "2026-12-31"

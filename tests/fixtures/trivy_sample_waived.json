@@ -1,0 +1,28 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "intake.registry.corp/payments/core-api:waived-sample",
+  "ArtifactType": "container_image",
+  "Results": [
+    {
+      "Target": "golang.org/x/net (gobinary)",
+      "Class": "lang-pkgs",
+      "Type": "gobinary",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2023-44487",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.15.0",
+          "FixedVersion": "v0.17.0",
+          "Severity": "HIGH",
+          "Title": "HTTP/2 Rapid Reset Denial of Service",
+          "Description": "The HTTP/2 protocol allows a denial of service (server resource consumption) because request cancellation can reset many streams quickly.",
+          "CVSS": {
+            "nvd": {
+              "V3Score": 7.5
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

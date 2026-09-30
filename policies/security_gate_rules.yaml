@@ -1,0 +1,13 @@
+# Security Gate Threshold Rules for Container Promotion
+rules:
+  max_critical_cves: 0
+  max_high_cves: 0
+  max_medium_cves: 5
+  max_low_cves: 50
+
+  block_cisa_kev: true            # CISA Known Exploited Vulnerability catalog
+  block_remote_code_execution: true # CVSS AV:N and C:H/I:H/A:H
+  max_cvss_score: 8.9             # Reject anything >= 9.0 without waiver
+
+  allowed_unfixed_grace_period_days: 14
+  strict_license_check: true
