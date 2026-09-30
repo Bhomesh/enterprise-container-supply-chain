@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-container-supply-chain"
+version = "1.0.0"
+authors = [
+  { name="Bhomesh Razdan", email="bhomeshrazdan@gmail.com" },
+]
+description = "Automated Container Image Hydration, Vulnerability Gating & Attestation Pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Security",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "requests>=2.31.0",
+    "cryptography>=42.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --cov=src"
+testpaths = [
+    "tests",
+]
