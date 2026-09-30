@@ -1,0 +1,62 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-30T12:00:00Z",
+    "tools": [
+      {
+        "vendor": "anchore",
+        "name": "syft",
+        "version": "1.0.0"
+      }
+    ],
+    "component": {
+      "type": "container",
+      "name": "intake.registry.corp/payments/core-api",
+      "version": "1.0.0-rc1"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "golang.org/x/crypto",
+      "version": "v0.21.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/crypto@v0.21.0"
+    },
+    {
+      "type": "library",
+      "name": "golang.org/x/net",
+      "version": "v0.23.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "purl": "pkg:golang/golang.org/x/net@v0.23.0"
+    },
+    {
+      "type": "library",
+      "name": "ca-certificates",
+      "version": "20230506-r0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:alpine/ca-certificates@20230506-r0?os_name=alpine&os_version=3.19.1"
+    }
+  ]
+}
