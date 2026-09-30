@@ -1,0 +1,42 @@
+# ==============================================================================
+# Stage 1: Build stage with pinned compiler & dependencies
+# ==============================================================================
+FROM golang:1.22-alpine AS builder
+
+WORKDIR /src
+
+# Security: Install build essentials without cached indexes
+RUN apk add --no-cache git ca-certificates tzdata
+
+COPY docker/app/main.go .
+
+# Initialize module and build static binary with hardening flags
+RUN go mod init payment-service && \
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+    -trimpath \
+    -ldflags="-s -w -buildid= -X main.Version=1.0.0" \
+    -o /bin/payment-service main.go
+
+# ==============================================================================
+# Stage 2: Distroless minimal runtime (NIST SP 800-190 & CIS compliant)
+# ==============================================================================
+FROM gcr.io/distroless/static-debian12:nonroot
+
+LABEL maintainer="security-engineering@corp.bank" \
+      org.opencontainers.image.title="enterprise-payment-core" \
+      org.opencontainers.image.description="Hardened production container service" \
+      org.opencontainers.image.vendor="Enterprise Banking Corp" \
+      org.opencontainers.image.version="1.0.0" \
+      security.slsa.level="3"
+
+WORKDIR /app
+
+# Copy binary from builder
+COPY --from=builder /bin/payment-service /app/payment-service
+
+# Explicit non-root user (distroless:nonroot UID 65532)
+USER 65532:65532
+
+EXPOSE 8080
+
+ENTRYPOINT ["/app/payment-service"]

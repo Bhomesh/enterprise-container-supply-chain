@@ -1,0 +1,26 @@
+services:
+  # 1. Intake Registry (Untrusted Quarantine Zone)
+  intake-registry:
+    image: registry:2.8.3
+    container_name: supply-chain-intake-registry
+    ports:
+      - "5001:5000"
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      - intake-data:/var/lib/registry
+
+  # 2. Golden Registry (Trusted Production Zone)
+  golden-registry:
+    image: registry:2.8.3
+    container_name: supply-chain-golden-registry
+    ports:
+      - "5002:5000"
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      - golden-data:/var/lib/registry
+
+volumes:
+  intake-data:
+  golden-data:
